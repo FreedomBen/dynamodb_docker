@@ -16,4 +16,6 @@ RUN wget http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local
 RUN tar -xzf dynamodb_local_latest.tar.gz
 RUN rm dynamodb_local_latest.tar.gz
 
+EXPOSE 8000
+
 CMD ["dumb-init", "java", "-Djava.library.path=/app/DynamoDBLocal_lib/", "-jar", "DynamoDBLocal.jar"]
