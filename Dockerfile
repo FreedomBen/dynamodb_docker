@@ -1,6 +1,6 @@
 FROM java:8
 
-RUN mkdir /app
+RUN mkdir -p /app/dynamo_data
 WORKDIR /app
 
 RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.0.0/dumb-init_1.0.0_amd64.deb  
@@ -18,4 +18,4 @@ RUN rm dynamodb_local_latest.tar.gz
 
 EXPOSE 8000
 
-CMD ["dumb-init", "java", "-Djava.library.path=/app/DynamoDBLocal_lib/", "-jar", "DynamoDBLocal.jar"]
+CMD ["dumb-init", "java", "-Djava.library.path=/app/DynamoDBLocal_lib/", "-jar", "DynamoDBLocal.jar", "-dbPath", "/app/dynamo_data"]

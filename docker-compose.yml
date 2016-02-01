@@ -4,6 +4,9 @@
 # destroy the container and rebuild, yet retain the data
 
 dynamodb:
-    image: freedomben/dynamodb
+    #image: freedomben/dynamodb
+    build: .
+    ports:
+        - "8000:8000"
     volumes:
-        ".:."
+        - "./dynamo_data:/app/dynamo_data"
